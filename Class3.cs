@@ -25,91 +25,81 @@ namespace Robot
                 {
                     case 'N':
                         Console.SetCursorPosition(x, --y);
-                        if (mas[i + 1] == 'E')
+                        switch (mas[i + 1])
                         {
-                            Console.Write("┌");
-                        }
-                        else if (mas[i + 1] == 'W')
-                        {
-                            Console.Write("┐");
-                        }
-                        else if (mas[i + 1] == 'S')
-                        {
-                            Console.Write("↓");
-                        }
-                        else
-                        {
-                            Console.Write("│");
+                            case 'E':
+                                Console.Write("┌");
+                                break;
+                            case 'W':
+                                Console.Write("┐");
+                                break;
+                            case 'S':
+                                Console.Write("↓");
+                                break;
+                            case 'N':
+                                Console.Write("│");
+                                break;
                         }
                         break;
                     case 'S':
                         Console.SetCursorPosition(x, ++y);
-                        if (mas[i + 1] == 'E')
+                        switch (mas[i + 1])
                         {
-                            Console.Write("└");
-                        }
-                        else if (mas[i + 1] == 'W')
-                        {
-                            Console.Write("┘");
-                        }
-                        else if (mas[i + 1] == 'N')
-                        {
-                            Console.Write("↑");
-                        }
-                        else
-                        {
-                            Console.Write("│");
+                            case 'E':
+                                Console.Write("└");
+                                break;
+                            case 'W':
+                                Console.Write("┘");
+                                break;
+                            case 'N':
+                                Console.Write("↑");
+                                break;
+                            case 'S':
+                                Console.Write("│");
+                                break;
                         }
                         break;
                     case 'W':
                         Console.SetCursorPosition(--x, y);
-                        if (mas[i + 1] == 'E')
+                        switch (mas[i + 1])
                         {
-                            Console.Write("→");
-                        }
-                        else if (mas[i + 1] == 'N')
-                        {
-                            Console.Write("└");
-                        }
-                        else if (mas[i + 1] == 'S')
-                        {
-                            Console.Write("┌");
-                        }
-                        else
-                        {
-                            Console.Write("─");
+                            case 'E':
+                                Console.Write("→");
+                                break;
+                            case 'N':
+                                Console.Write("└");
+                                break;
+                            case 'S':
+                                Console.Write("┌");
+                                break;
+                            case 'W':
+                                Console.Write("─");
+                                break;
                         }
                         break;
                     case 'E':
                         Console.SetCursorPosition(++x, y);
-                        if (mas[i + 1] == 'N')
+                        switch (mas[i + 1])
                         {
-                            Console.Write("┘");
-                        }
-                        else if (mas[i + 1] == 'W')
-                        {
-                            Console.Write("←");
-                        }
-                        else if (mas[i + 1] == 'S')
-                        {
-                            Console.Write("┐");
-                        }
-                        else
-                        {
-                            Console.Write("─");
+                            case 'N':
+                                Console.Write("┘");
+                                break;
+                            case 'W':
+                                Console.Write("←");
+                                break;
+                            case 'S':
+                                Console.Write("┐");
+                                break;
+                            case 'E':
+                                Console.Write("─");
+                                break;
                         }
                         break;
                 }
             }
             Console.SetCursorPosition(x, y);
-            if (x==sx && y==sy)
-            {
-                Console.Write("▓");
-            }
-            else
-            {
-                Console.Write("┼");
-            }
+            char konec = (x == sx && y == sy ? '▓': '┼');
+            Console.Write(konec);
         }
     }
 }
