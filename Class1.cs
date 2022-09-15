@@ -8,37 +8,55 @@ namespace Robot
 {
     class Chet
     {
-        public int x = 0;
-        public int y = 0;
+        public int chetx = 0;
+        public int chety = 0;
 
-        public void Shag(char o, ref int count, ref bool proof)
+        public int y = Console.WindowHeight / 2;
+        public int x = Console.WindowWidth / 2;
+
+        public int sx = Console.WindowWidth / 2;
+        public int sy = Console.WindowHeight / 2;
+
+        public void Shag(char o, ref int count, ref bool proof, char[] mas, ref int i)
         {
+            Graphic gr = new Graphic();
             switch (o)
             {
                 case 'N':
-                    y++;
+                    y--;
+                    chety++;
                     break;
                 case 'S':
-                    y--;
+                    y++;
+                    chety--;
                     break;
                 case 'W':
                     x--;
+                    chetx--;
                     break;
                 case 'E':
                     x++;
+                    chetx++;
                     break;
             }
-            Console.WriteLine("X = " + x + "\tY = " + y);
-            Proverka(ref proof);
-            count++;
-            if (proof)
+            Console.SetCursorPosition(0, 1);
+            Console.Write(new String(' ', Console.BufferWidth));
+            Console.SetCursorPosition(0, 1);
+            if (chetx > 20)
             {
-                return;
+                Console.Write("X = " + chetx + "\tY = " + chety);
+                gr.Draw(mas, i, y, x, sx, sy);
+                Proverka(ref proof);
+                count++;
+                if (proof)
+                {
+                    return;
+                }
             }
         }
         public void Proverka(ref bool proof)
         {
-            if (x == 0 && y == 0)
+            if (chetx == 0 && chety == 0)
             {
                 proof = true;
             }

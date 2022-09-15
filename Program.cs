@@ -6,7 +6,7 @@ class Zadanie
 {
     public static void Main()
     {
-        var strk = 0;
+        Console.SetWindowSize(100, 50);
         var count = 0;
         var i = 0;
         bool check = false;
@@ -15,10 +15,10 @@ class Zadanie
         char[] mas = new char[100];
         char[] storoni = {'N', 'S', 'W', 'E'};
         Chet ch = new Chet();
-        Graphic gr = new Graphic();
 
         do
         {
+            Console.SetCursorPosition(0, 0);
             Console.Write("Введите сторону направления(N,S,W,E) K-окончание программы: ");
             var userinput = Console.ReadLine();
             char.TryParse(userinput, out output);
@@ -26,31 +26,32 @@ class Zadanie
             {
                 if (output == storoni[j])
                 {
-                    mas[i] = output;
-                    ch.Shag(output, ref count, ref check);
                     i++;
+                    mas[i] = output;
+                    ch.Shag(output, ref count, ref check, mas, ref i);
                 }
             }
-            strk += 2;
             if (check)
             {
                 break;
             }
+            Console.SetCursorPosition(0, 0);
+            Console.Write(new String(' ', Console.BufferWidth));
         } while (output != 'K');
 
+        Console.SetCursorPosition(0, 2);
         if (!check)
         {
-            Console.WriteLine("---------------------\nНе пришли в исходную точку.");
+            Console.WriteLine("Не пришли в исходную точку.");
         }
         else
         {
-            Console.WriteLine("---------------------\nПришли в исходную точку пути.");
+            Console.WriteLine("Пришли в исходную точку пути.");
         }
 
         Console.WriteLine("Шагов пройдено: " + count);
         Console.Write("Проделанный путь: ");
         Console.WriteLine(String.Join(" ", mas));
-        gr.Draw(mas, count, strk);
         Console.ReadKey();
     }
 }
